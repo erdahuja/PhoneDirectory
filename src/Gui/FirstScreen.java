@@ -41,6 +41,17 @@ public class FirstScreen extends JFrame {
 
 		JButton btnSearch = new JButton("Search");
 		btnSearch.setBounds(240, 80, 160, 55);
+		btnSearch.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Logic.SaveContact.search();
+				fc.setVisible(false);
+				fc.dispose();
+
+			}
+		});
+		
+		
 		panel.add(btnSearch);
 
 		JLabel lblPhonebook = new JLabel("PhoneBook");

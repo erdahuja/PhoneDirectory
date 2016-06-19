@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Logic.SaveContact;
+
 public class NewContact extends JFrame {
 
 	public static void main(String[] args) {
@@ -79,8 +81,10 @@ public class NewContact extends JFrame {
 					panel.repaint();
 					count1++;
 
+				} else {
+					i = 1;
+					count1 = 0;
 				}
-
 			}
 
 		});
@@ -118,6 +122,9 @@ public class NewContact extends JFrame {
 					panel.repaint();
 					count2++;
 
+				} else {
+					j = 1;
+					count2 = 0;
 				}
 
 			}
@@ -126,26 +133,48 @@ public class NewContact extends JFrame {
 
 		panel.revalidate();
 		fc2.getContentPane().add(panel);
-		
+
 		JButton btnSave = new JButton("Save");
 		btnSave.setBounds(185, 26, 117, 25);
 		btnSave.requestFocus(false);
 		panel.add(btnSave);
-		
+
 		btnSave.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
 
-				
+				String name = nameField.getText();
+				int n = mblField.size();
+				int m = addField.size();
+				ArrayList<String> as = new ArrayList<>();
+				ArrayList<String> ps = new ArrayList<>();
+				for (int i = 0; i < n; i++) {
+					as.add(mblField.get(i).getText());
+
+				}
+				for (int i = 0; i < m; i++) {
+					ps.add(addField.get(i).getText());
+
+				}
+
+				new Logic.SaveContact(name, as, ps);
+				nameField.setText("");
+				for (int i = 0; i < count1; i++) {
+					mblField.get(i).setText("");
+
+				}
+				for (int i = 0; i < count2; i++) {
+					addField.get(i).setText("");
+
+				}
+				btnSave.requestFocus(false);
+
+				SaveContact.search();
+
 			}
 
 		});
-		
-		
-		
-		
-		
+
 		fc2.setTitle("Add New Contact");
 		fc2.revalidate();
 
