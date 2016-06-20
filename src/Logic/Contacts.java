@@ -1,11 +1,9 @@
 package Logic;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import Gui.Search;
 
-import javax.swing.JFrame;
-
-class Contacts implements Comparable {
+public class Contacts implements Comparable {
 
 	String name;
 	ArrayList<String> contactNo = new ArrayList<String>();
@@ -19,7 +17,7 @@ class Contacts implements Comparable {
 		this.address = address;
 	}
 
-	Contacts(String search) {
+	public Contacts(String search) {
 		this.search = search;
 	}
 
@@ -32,13 +30,21 @@ class Contacts implements Comparable {
 		return false;
 	}
 
+	@Override
 	public boolean equals(Object o) {
 		boolean isFound = false;
 		Contacts arrayElement = (Contacts) o; // Downcasting
 
 		if (this.search.equals(arrayElement.name)) {
-			System.out.println(
-					"Name Found :" + arrayElement.name + arrayElement.getContactNo() + arrayElement.getAddress());
+			String searchResult = "Name Found :" + arrayElement.name + arrayElement.getContactNo()
+					+ arrayElement.getAddress();
+			Search.printResult(searchResult);
+			/*
+			 * System.out.println(
+			 * 
+			 * "Name Found :" + arrayElement.name + arrayElement.getContactNo()
+			 * + arrayElement.getAddress());
+			 */
 			return true;
 
 		}
@@ -46,9 +52,15 @@ class Contacts implements Comparable {
 			for (int i = 0; i <= contactNo.size(); i++) {
 				// System.out.println("Number "+arrayElement.contactNo.get(i));
 				if (this.search.equals(arrayElement.contactNo.get(i))) {
-					System.out.println("Number Found :" + arrayElement.name + arrayElement.contactNo.get(i)
-							+ arrayElement.address.get(i));
-					return true;
+
+					String searchResult = "Name Found :" + arrayElement.name + arrayElement.getContactNo()
+							+ arrayElement.getAddress();
+					Search.printResult(searchResult);
+					/*
+					 * System.out.println("Number Found :" + arrayElement.name +
+					 * arrayElement.contactNo.get(i) +
+					 * arrayElement.address.get(i));
+					 */return true;
 				}
 			}
 		}
@@ -84,11 +96,4 @@ class Contacts implements Comparable {
 	public String toString() {
 		return this.name + " " + this.contactNo + " " + this.address;
 	}
-}
-
-public class CRUDDemo extends JFrame {
-	public CRUDDemo() {
-
-	}
-
 }

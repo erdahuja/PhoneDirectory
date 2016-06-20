@@ -44,14 +44,14 @@ public class FirstScreen extends JFrame {
 		btnSearch.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				Logic.SaveContact.search();
+				new Search();
+				// Logic.SaveContact.search();
 				fc.setVisible(false);
 				fc.dispose();
 
 			}
 		});
-		
-		
+
 		panel.add(btnSearch);
 
 		JLabel lblPhonebook = new JLabel("PhoneBook");

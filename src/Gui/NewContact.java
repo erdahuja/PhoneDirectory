@@ -14,8 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Logic.SaveContact;
-
 public class NewContact extends JFrame {
 
 	public static void main(String[] args) {
@@ -168,8 +166,6 @@ public class NewContact extends JFrame {
 
 				}
 				btnSave.requestFocus(false);
-
-				SaveContact.search();
 
 			}
 
